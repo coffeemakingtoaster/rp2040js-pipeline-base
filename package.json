@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "rp2040js": "^0.19.3",
+    "uf2": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.4",
+    "ts-node": "^10.9.2"
+  },
+  "scripts": {
+    "start": "ts-node src/main.ts"
+  }
+}
