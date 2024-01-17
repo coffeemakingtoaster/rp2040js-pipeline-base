@@ -5,5 +5,4 @@ on:
 
 jobs:
   docker-build-and-push:
-    needs: tests
     uses: ./.github/workflows/docker-build-and-push.template.yml
