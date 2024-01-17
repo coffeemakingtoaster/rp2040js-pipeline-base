@@ -1,0 +1,9 @@
+name: main-ci
+
+on:
+  push:
+
+jobs:
+  docker-build-and-push:
+    needs: tests
+    uses: ./.github/workflows/docker-build-and-push.template.yml
