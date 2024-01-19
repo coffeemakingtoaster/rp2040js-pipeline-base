@@ -21,7 +21,20 @@ rp2040.logger = new ConsoleLogger(LogLevel.Error);
 // Create a USB CDC
 const cdc = new USBCDC(rp2040.usbCtrl)
 
+cdc.onDeviceConnected = () => {
+    console.log("Connected, ending sync sequence!")
+    cdc.sendSerialByte(1)
+}
+
 cdc.onSerialData = (value) => {
+    const parsedValue = new TextDecoder().decode(value);
+    if (parsedValue == "**awaiting sync**")
+    {
+        console.log("Received sync await. Syncing...")
+        // I can send anything really...this is just to validate that the emulator now receives printf values -> tests can start
+        cdc.sendSerialByte(1)
+
+    }
     process.stdout.write(value);
 };
 
