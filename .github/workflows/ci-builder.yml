@@ -1,11 +1,11 @@
-name: main-ci
+name: builder-ci
 
 on:
   push:
     paths:
       - builder-image/**
       - .github/workflows/**
-
+jobs:
   docker-build-and-push-builder:
     uses: ./.github/workflows/docker-build-and-push.template.yml
     with:
