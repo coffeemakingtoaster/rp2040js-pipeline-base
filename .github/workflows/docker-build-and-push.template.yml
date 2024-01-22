@@ -2,9 +2,12 @@ name: Docker build and push
 
 on:
   workflow_call:
+    inputs:
+      context:
+        type: string
         
 env:
-  image: ghcr.io/coffeemakingtoaster/rp2040js-pipeline-base/rp2040-pipeline
+  image: ghcr.io/coffeemakingtoaster/rp2040js-pipeline-base/${{ github.base_ref || 'rp2040-pipeline' }}
 
 jobs:
  build:
@@ -43,7 +46,7 @@ jobs:
         id: build
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./${{ inputs.context || "." }}
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true,name=${{ env.image }}
