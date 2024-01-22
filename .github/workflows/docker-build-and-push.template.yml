@@ -7,7 +7,7 @@ on:
         type: string
         
 env:
-  image: ghcr.io/coffeemakingtoaster/rp2040js-pipeline-base/${{ github.base_ref || 'rp2040-pipeline' }}
+  image: ghcr.io/coffeemakingtoaster/rp2040js-pipeline-base/${{ inputs.context  || 'rp2040-pipeline' }}
 
 jobs:
  build:
