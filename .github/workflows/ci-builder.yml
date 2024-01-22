@@ -1,0 +1,12 @@
+name: main-ci
+
+on:
+  push:
+    paths:
+      - builder-image/**
+      - .github/workflows/**
+
+  docker-build-and-push-builder:
+    uses: ./.github/workflows/docker-build-and-push.template.yml
+    with:
+      context: builder-image
